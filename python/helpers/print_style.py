@@ -101,7 +101,11 @@ class PrintStyle:
             self._log_html("<br>")
         plain_text, styled_text, html_text = self.get(*args, sep=sep, **kwargs)
         if not self.log_only:
-            print(styled_text, end='\n', flush=True)
+            try:
+                print(styled_text, end='\n', flush=True)
+            except UnicodeEncodeError:
+                # Fallback to printing without styling if encoding fails
+                print(plain_text, end='\n', flush=True)
         self._log_html(html_text+"<br>\n")
         PrintStyle.last_endline = True
 
@@ -109,7 +113,11 @@ class PrintStyle:
         self._add_padding_if_needed()
         plain_text, styled_text, html_text = self.get(*args, sep=sep, **kwargs)
         if not self.log_only:
-            print(styled_text, end='', flush=True)
+            try:
+                print(styled_text, end='', flush=True)
+            except UnicodeEncodeError:
+                # Fallback to printing without styling if encoding fails
+                print(plain_text, end='', flush=True)
         self._log_html(html_text)
         PrintStyle.last_endline = False
 

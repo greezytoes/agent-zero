@@ -54,7 +54,12 @@ def get_openai_instruct(model_name:str, api_key=get_api_key("openai"), temperatu
     return OpenAI(model=model_name, temperature=temperature, api_key=api_key) # type: ignore
 
 def get_openai_embedding(model_name:str, api_key=get_api_key("openai")):
-    return OpenAIEmbeddings(model=model_name, api_key=api_key) # type: ignore
+    return OpenAIEmbeddings(
+        model=model_name,
+        api_key=api_key,
+        openai_api_type="open_ai",
+        openai_api_base="https://api.openai.com/v1"
+    ) # type: ignore
 
 def get_azure_openai_chat(deployment_name:str, api_key=get_api_key("openai_azure"), temperature=DEFAULT_TEMPERATURE, azure_endpoint=os.getenv("OPENAI_AZURE_ENDPOINT")):
     return AzureChatOpenAI(deployment_name=deployment_name, temperature=temperature, api_key=api_key, azure_endpoint=azure_endpoint) # type: ignore

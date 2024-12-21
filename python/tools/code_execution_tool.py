@@ -111,9 +111,21 @@ class CodeExecution(Tool):
         self.agent.set_data("cot_state", self.state)
 
     async def execute_python_code(self, code: str, reset: bool = False):
-        escaped_code = shlex.quote(code)
-        command = f"ipython -c {escaped_code}"
-        return await self.terminal_session(command, reset)
+        # Write code to a temporary file
+        import tempfile
+        import os
+        
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.py', delete=False) as f:
+            f.write(code)
+            temp_file = f.name
+        
+        try:
+            command = f"python {temp_file}"
+            result = await self.terminal_session(command, reset)
+        finally:
+            os.unlink(temp_file)  # Clean up the temporary file
+            
+        return result
 
     async def execute_nodejs_code(self, code: str, reset: bool = False):
         escaped_code = shlex.quote(code)

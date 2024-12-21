@@ -1,4 +1,5 @@
 import models
+import os
 from agent import AgentConfig
 from python.helpers import files
 
@@ -44,7 +45,7 @@ def initialize():
         # msgs_keep_end = 10,
         max_tool_response_length = 3000,
         # response_timeout_seconds = 60,
-        code_exec_docker_enabled = True,
+        code_exec_docker_enabled = False,
         # code_exec_docker_name = "agent-zero-exe",
         # code_exec_docker_image = "frdel/agent-zero-exe:latest",
         # code_exec_docker_ports = { "22/tcp": 50022 }
@@ -52,7 +53,7 @@ def initialize():
             # files.get_abs_path("work_dir"): {"bind": "/root", "mode": "rw"},
             # files.get_abs_path("instruments"): {"bind": "/instruments", "mode": "rw"},
             #                         },
-        code_exec_ssh_enabled = True,
+        code_exec_ssh_enabled = False,
         # code_exec_ssh_addr = "localhost",
         # code_exec_ssh_port = 50022,
         # code_exec_ssh_user = "root",

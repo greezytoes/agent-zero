@@ -1,0 +1,67 @@
+{
+    "name": "agent-zero-extension",
+    "displayName": "Agent Zero Extension",
+    "description": "A VS Code extension that integrates Agent Zero for coding assistance.",
+    "version": "0.0.1",
+    "publisher": "your-name",
+    "engines": {
+        "vscode": "^1.50.0"
+    },
+    "activationEvents": [
+        "onCommand:extension.queryAgentZero"
+    ],
+    "main": "extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "extension.queryAgentZero",
+                "title": "Query Agent Zero"
+            }
+        ]
+    },
+    "dependencies": {
+        "agent-base": "^6.0.2",
+        "balanced-match": "^1.0.2",
+        "brace-expansion": "^1.1.11",
+        "browser-stdout": "^1.3.1",
+        "buffer-from": "^1.1.2",
+        "commander": "^2.15.1",
+        "concat-map": "^0.0.1",
+        "debug": "^4.4.0",
+        "diff": "^3.5.0",
+        "es6-promise": "^4.2.8",
+        "es6-promisify": "^5.0.0",
+        "escape-string-regexp": "^1.0.5",
+        "fs.realpath": "^1.0.0",
+        "glob": "^7.2.3",
+        "growl": "^1.10.5",
+        "has-flag": "^3.0.0",
+        "he": "^1.1.1",
+        "http-proxy-agent": "^4.0.1",
+        "https-proxy-agent": "^5.0.1",
+        "inflight": "^1.0.6",
+        "inherits": "^2.0.4",
+        "minimatch": "^3.1.2",
+        "minimist": "^0.0.8",
+        "mkdirp": "^0.5.1",
+        "ms": "^2.1.3",
+        "once": "^1.4.0",
+        "path-is-absolute": "^1.0.1",
+        "semver": "^5.7.2",
+        "source-map": "^0.6.1",
+        "source-map-support": "^0.5.21",
+        "supports-color": "^5.4.0",
+        "vscode-test": "^0.4.3",
+        "wrappy": "^1.0.2"
+    },
+    "devDependencies": {
+        "mocha": "^5.2.0",
+        "vscode": "^1.1.37"
+    },
+    "scripts": {
+        "test": "mocha"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+}
